@@ -14,12 +14,9 @@ npm i -g jippy
 - ![Video copying line-separated text](https://i.gyazo.com/62bea19c0ff346c22e9f7ee9e8d65813.gif)
 
 2. Run `jippy` to read and parse your clipboard.
-- ![Initial run of Jippy](https://gyazo.com/97a0e8ce248e41d3b0d3bbfd8b9054b3.png)
+- ![Initial run of Jippy](https://gyazo.com/ad6cdf2222dc2a0a911079adfd133108.gif)
 
-3. Convert!
-- ![Completed conversion](https://gyazo.com/da3035d6a6e6abc4f4fff0915ff2f05a.png)
-
-##### Result:
+3. Success!
 ```json
 ["Array index #0","Array index #1","foo","bar"]
 ```
