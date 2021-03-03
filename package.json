@@ -25,6 +25,9 @@
     "url": "https://github.com/JorgenVatle/format-list/issues"
   },
   "homepage": "https://github.com/JorgenVatle/format-list#readme",
+  "bin": {
+    "format-list": "./bin/format-list.js"
+  },
   "dependencies": {
     "clipboardy": "^2.3.0",
     "inquirer": "^8.0.0",
