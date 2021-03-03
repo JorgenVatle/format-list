@@ -1,6 +1,6 @@
 {
   "name": "jippy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CLI tool for formatting plain-text lists into various formats (JSON array, JS array, etc.)",
   "main": "dist/index.js",
   "files": [
