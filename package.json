@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JorgenVatle/format-list.git"
+    "url": "git+https://github.com/JorgenVatle/jippy.git"
   },
   "keywords": [
     "plain-text",
@@ -24,9 +24,9 @@
   "author": "Jørgen Vatle <jorgen@wcaservices.net>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JorgenVatle/format-list/issues"
+    "url": "https://github.com/JorgenVatle/jippy/issues"
   },
-  "homepage": "https://github.com/JorgenVatle/format-list#readme",
+  "homepage": "https://github.com/JorgenVatle/jippy#readme",
   "bin": {
     "jippy": "bin/jippy.js",
     "jsonmyclipboard": "bin/jippy.js"
