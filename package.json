@@ -1,5 +1,5 @@
 {
-  "name": "format-list",
+  "name": "jippy",
   "version": "1.0.0",
   "description": "CLI tool for formatting plain-text lists into various formats (JSON array, JS array, etc.)",
   "main": "dist/index.js",
@@ -28,7 +28,8 @@
   },
   "homepage": "https://github.com/JorgenVatle/format-list#readme",
   "bin": {
-    "format-list": "./bin/format-list.js"
+    "jippy": "bin/jippy.js",
+    "jsonmyclipboard": "bin/jippy.js"
   },
   "dependencies": {
     "clipboardy": "^2.3.0",
