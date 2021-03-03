@@ -22,13 +22,13 @@ bar
 ```bash
 jippy
 ```
-![preview](https://gyazo.com/da80a799d5282c8901f7bea560f048f1.png)
+![Example usage](https://gyazo.com/da3035d6a6e6abc4f4fff0915ff2f05a.png)
 
 If you'd like to convert your clipboard directly, skipping the formatting wizard, supply `--instant` or `-i`.
 ```bash
 jippy -i
 ```
-![preview](https://gyazo.com/a2f65d7b069af5f7b6ff9ef1e653d0ab.png)
+![Example quick-usage](https://gyazo.com/171f3c6812306e6f93dc744c03004d93.png)
 
 ## License
 ISC
