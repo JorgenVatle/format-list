@@ -1,4 +1,5 @@
 import Clipboardy from 'clipboardy';
+import Inquirer from 'inquirer';
 
 export default class Parser {
 
@@ -16,11 +17,28 @@ export default class Parser {
         this.result = this.text.trim().split(/(\r\n|\r|\n)+/).map((entry) => entry.trim()).filter((entry) => !!entry);
     }
 
-    public isExistingJsonArray() {
+    public async validateTextContent() {
+        let content: boolean;
         try {
-            return Array.isArray(JSON.parse(this.text || ''));
+            content = JSON.parse(this.text || '');
         } catch (e) {
-            return false;
+            return;
+        }
+
+        if (!Array.isArray(content)) {
+            return;
+        }
+
+        console.log(content);
+
+        const { shouldAbort } = await Inquirer.prompt({
+            name: 'shouldAbort',
+            type: 'confirm',
+            message: 'It looks like your clipboard already consists of a JSON array. Skip conversion?'
+        });
+
+        if (shouldAbort) {
+            process.exit(0);
         }
     }
 
