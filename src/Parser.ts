@@ -5,7 +5,7 @@ export default class Parser {
     protected result: Array<string>;
 
     public constructor(
-        protected text: string,
+        protected text?: string,
     ) {
         try {
             this.text = Clipboardy.readSync();
