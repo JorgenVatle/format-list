@@ -16,6 +16,14 @@ export default class Parser {
         this.result = this.text.trim().split(/(\r\n|\r|\n)+/).map((entry) => entry.trim()).filter((entry) => !!entry);
     }
 
+    public isExistingJsonArray() {
+        try {
+            return Array.isArray(JSON.parse(this.text || ''));
+        } catch (e) {
+            return false;
+        }
+    }
+
     public print(header?: string) {
         if (header) {
             console.log(`\n${header}`);
