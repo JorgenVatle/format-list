@@ -10,13 +10,8 @@ npm i -g jippy
 ```
 
 ## Usage
-1. Copy any line-separated list to your clipboard. E.g.
-```text
-Array index #0
-Array index #1
-foo
-bar
-```
+1. Copy any line-separated list to your clipboard.
+- ![Video copying line-separated text](https://i.gyazo.com/62bea19c0ff346c22e9f7ee9e8d65813.gif)
 
 2. Run `jippy` to read and parse your clipboard.
 - ![Initial run of Jippy](https://gyazo.com/97a0e8ce248e41d3b0d3bbfd8b9054b3.png)
