@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/JorgenVatle/format-list#readme",
   "dependencies": {
+    "clipboardy": "^2.3.0",
     "minimist": "^1.2.5"
   },
   "devDependencies": {
