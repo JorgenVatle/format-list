@@ -23,8 +23,11 @@
     "url": "https://github.com/JorgenVatle/format-list/issues"
   },
   "homepage": "https://github.com/JorgenVatle/format-list#readme",
-  "dependencies": {},
+  "dependencies": {
+    "minimist": "^1.2.5"
+  },
   "devDependencies": {
+    "@types/minimist": "^1.2.1",
     "@types/node": "^14.14.31"
   }
 }
