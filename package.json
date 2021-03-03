@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepack": "rm -rf ./dist && tsc"
+    "prepack": "rm -rf ./dist && tsc",
+    "postpublish": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
