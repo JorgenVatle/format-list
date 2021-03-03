@@ -30,6 +30,6 @@ export default class Parser {
 
     public async save() {
         await Clipboardy.write(JSON.stringify(this.result));
-        this.print('Copied the following to your clipboard:');
+        this.print('Copied the following JSON array to your clipboard:');
     }
 }
