@@ -18,12 +18,19 @@ foo
 bar
 ```
 
-2. Convert to a JSON array by running the following command in your terminal.
-```bash
-jippy
-```
-![Example usage](https://gyazo.com/da3035d6a6e6abc4f4fff0915ff2f05a.png)
+2. Run `jippy` to read and parse your clipboard.
+- ![Initial run of Jippy](https://gyazo.com/97a0e8ce248e41d3b0d3bbfd8b9054b3.png)
 
+3. Convert!
+- ![Completed conversion](https://gyazo.com/da3035d6a6e6abc4f4fff0915ff2f05a.png)
+
+##### Result:
+```json
+["Array index #0","Array index #1","foo","bar"]
+```
+
+
+### Alternative usage
 If you'd like to convert your clipboard directly, skipping the formatting wizard, supply `--instant` or `-i`.
 ```bash
 jippy -i
