@@ -2,19 +2,18 @@ import Clipboardy from 'clipboardy';
 
 export default class Parser {
 
-    protected result: Array<string>;
+    public result: Array<string>;
 
     public constructor(
         protected text?: string,
     ) {
         try {
             this.text = Clipboardy.readSync();
-            console.log(this.text)
         } catch (e) {
             console.error('Could not read from clipboard! Are you sure the content of your clipboard is a UTF-8 encoded string?')
             process.exit(1);
         }
-        this.result = this.text.trim().split(/(\r\n|\r|\n)+/);
+        this.result = this.text.trim().split(/(\r\n|\r|\n)+/).map((entry) => entry.trim()).filter((entry) => !!entry);
     }
 
     public print(header?: string) {
