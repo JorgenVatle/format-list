@@ -1,5 +1,8 @@
 # Format List
 A simple command-line utility for converting a line-separated list of strings from your clipboard to a JSON array.
+Compatible with Windows, MacOS and Linux.
+
+Uses [Clipboardy](https://www.npmjs.com/package/clipboardy) behind the scenes.
 
 ## Installation
 ```bash
