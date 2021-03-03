@@ -10,6 +10,10 @@ export default class Parser {
         this.result = text.trim().split(/(\r\n|\r|\n)+/);
     }
 
+    public print() {
+        console.log(this.result);
+    }
+
     public save() {
         return Clipboardy.write(JSON.stringify(this.result));
     }
