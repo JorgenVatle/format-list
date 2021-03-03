@@ -31,4 +31,6 @@ jippy -i
 ![Example quick-usage](https://gyazo.com/171f3c6812306e6f93dc744c03004d93.png)
 
 ## License
-ISC
+This repository is licensed under the ISC license.
+
+Copyright (c) 2021, Jørgen Vatle.
