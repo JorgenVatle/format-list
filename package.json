@@ -1,0 +1,26 @@
+{
+  "name": "format-list",
+  "version": "1.0.0",
+  "description": "CLI tool for formatting plain-text lists into various formats (JSON array, JS array, etc.)",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JorgenVatle/format-list.git"
+  },
+  "keywords": [
+    "plain-text",
+    "formatting",
+    "json",
+    "javascript",
+    "typescript"
+  ],
+  "author": "Jørgen Vatle <jorgen@wcaservices.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JorgenVatle/format-list/issues"
+  },
+  "homepage": "https://github.com/JorgenVatle/format-list#readme"
+}
