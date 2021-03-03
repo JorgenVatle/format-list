@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "CLI tool for formatting plain-text lists into various formats (JSON array, JS array, etc.)",
   "main": "dist/index.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepack": "rm -rf ./dist && tsc"
