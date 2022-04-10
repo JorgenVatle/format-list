@@ -1,6 +1,6 @@
 import Minimist from 'minimist';
 import Inquirer, { Question, QuestionCollection } from 'inquirer';
-import Parser from './Parser';
+import Parser from './Providers/Parser';
 
 type InputSource = 'clipboard' | 'file' | 'pipe';
 
