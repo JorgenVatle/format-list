@@ -12,14 +12,14 @@ export default Parser<CliOptions>({
             return value;
         },
         alias: 's',
-        typeLabel: `Input source. Can be one of the following; ${AvailableInputSources.join(', ')}`,
         defaultValue: 'clipboard',
+        description: `Input source. Can be one of the following; ${AvailableInputSources.join(', ')}`,
     },
     immediate: {
         type: Boolean,
         alias: 'i',
         defaultValue: false,
-        typeLabel: 'Skip the confirmation prompt - just push directly to the clipboard and hope for the best! 🙏'
+        description: 'Skip the confirmation prompt - just push directly to the clipboard and hope for the best! 🙏'
     },
     help: {
         type: Boolean,
