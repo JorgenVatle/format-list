@@ -40,6 +40,7 @@ export default Parser<CliOptions>({
             }
             return value;
         },
+        defaultValue: [],
         alias: 'o',
         multiple: true,
         description: 'Specify whether we should obfuscate the input text',
