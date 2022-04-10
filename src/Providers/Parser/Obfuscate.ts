@@ -29,5 +29,3 @@ export class Obfuscate {
         return result;
     }
 }
-
-type Obfuscates = CliOptions['obfuscate'];
