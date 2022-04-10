@@ -10,8 +10,8 @@ export default class Parser {
         protected text: string,
         protected obfuscates?: CliOptions['obfuscate'],
     ) {
-        this.result = new Obfuscate(obfuscates)
-            .apply(text)
+        this.text = new Obfuscate(obfuscates).apply(text);
+        this.result = this.text
             .trim()
             .split(/[\r\n]+/)
             .map((entry) => entry.trim())
