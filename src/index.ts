@@ -1,18 +1,18 @@
 import Inquirer from 'inquirer';
-import { availableSources, options } from './Providers/CliArgs';
+import CliArgs, { AvailableInputSources } from './Providers/CliArgs';
 import Parser from './Providers/Parser';
 
 (async () => {
-    const source = options.source || 'clipboard';
+    const source = CliArgs.source || 'clipboard';
 
-    if (!availableSources.includes(source)) {
-        console.error(`'%s' is not an allowed input source. Please enter one of the following as the '-s' argument: %s`, options.source, availableSources);
+    if (!AvailableInputSources.includes(source)) {
+        console.error(`'%s' is not an allowed input source. Please enter one of the following as the '-s' argument: %s`, CliArgs.source, AvailableInputSources);
     }
 
     const parser = new Parser();
     await parser.validateTextContent();
 
-    if (options.immediate) {
+    if (CliArgs.immediate) {
         await parser.save();
         return;
     }
