@@ -6,14 +6,8 @@ export default class Parser {
     public result: Array<string>;
 
     public constructor(
-        protected text?: string,
+        protected text: string,
     ) {
-        try {
-            this.text = Clipboardy.readSync();
-        } catch (e) {
-            console.error('Could not read from clipboard! Are you sure the content of your clipboard is a UTF-8 encoded string?')
-            process.exit(1);
-        }
         this.result = this.text.trim().split(/[\r\n]+/).map((entry) => entry.trim()).filter((entry) => !!entry);
     }
 

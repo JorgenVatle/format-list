@@ -1,16 +1,15 @@
-import Chalk from 'chalk';
-import Clipboardy from 'clipboardy';
 import Inquirer from 'inquirer';
 import CliArgs from './Providers/CliArgs';
 import Logger from './Providers/Logger';
 import Parser from './Providers/Parser';
+import ReadClipboard from './Providers/ReadClipboard';
 
 (async () => {
     let parser: Parser;
 
     switch (CliArgs.source) {
         case 'clipboard':
-            parser = new Parser(Clipboardy.readSync());
+            parser = new Parser(await ReadClipboard());
             break;
         default:
             Logger.error('Unknown or unsupported source!');
