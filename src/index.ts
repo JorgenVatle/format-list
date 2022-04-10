@@ -1,23 +1,6 @@
-import Minimist from 'minimist';
-import Inquirer, { Question, QuestionCollection } from 'inquirer';
+import Inquirer from 'inquirer';
+import { availableSources, options } from './Providers/CliArgs';
 import Parser from './Providers/Parser';
-
-type InputSource = 'clipboard' | 'file' | 'pipe';
-
-interface CliOptions {
-    immediate: boolean;
-    source: InputSource;
-}
-
-const availableSources: InputSource[] = ['clipboard'];
-const options = Minimist<CliOptions>(process.argv.splice(2), {
-    boolean: ['immediate'],
-    string: ['source'],
-    alias: {
-        i: 'immediate',
-        s: 'source',
-    }
-});
 
 (async () => {
     const source = options.source || 'clipboard';
