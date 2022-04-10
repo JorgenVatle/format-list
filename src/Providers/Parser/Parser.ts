@@ -1,18 +1,12 @@
-import { CliOptions } from '../CliArgs';
 import { WriteToClipboard } from '../Clipboard';
-import { Obfuscate } from './Obfuscate';
 import { Validator } from './Validator';
 
 export default class Parser {
 
     public result: Array<string>;
 
-    public constructor(
-        protected text: string,
-        protected obfuscates?: CliOptions['obfuscate'],
-    ) {
-        this.text = new Obfuscate(obfuscates).apply(text);
-        this.result = this.text
+    public constructor(protected text: string) {
+        this.result = text
             .trim()
             .split(/[\r\n]+/)
             .map((entry) => entry.trim())

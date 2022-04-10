@@ -1,15 +1,16 @@
 import Inquirer from 'inquirer';
 import CliArgs from './Providers/CliArgs';
 import Logger from './Providers/Logger';
+import { Obfuscate } from './Providers/Parser/Obfuscate';
 import Parser from './Providers/Parser/Parser';
 import { ReadClipboard } from './Providers/Clipboard';
 
 (async () => {
-    let parser: Parser;
+    let text: string;
 
     switch (CliArgs.source) {
         case 'clipboard':
-            parser = new Parser(await ReadClipboard(), CliArgs.obfuscate);
+            text = await ReadClipboard();
             break;
         default:
             Logger.error('Unknown or unsupported source!');
@@ -17,6 +18,8 @@ import { ReadClipboard } from './Providers/Clipboard';
             return process.exit(1);
     }
 
+    const obfuscate = new Obfuscate(CliArgs.obfuscate);
+    const parser = new Parser(obfuscate.apply(text));
     await parser.validateContent();
 
     if (CliArgs.immediate) {

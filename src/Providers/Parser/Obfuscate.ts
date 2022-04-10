@@ -7,8 +7,7 @@ export class Obfuscate {
 
     constructor(
         protected obfuscates?: CliOptions['obfuscate'],
-    ) {
-    };
+    ) {};
 
     public apply(text: string) {
         if (!this.obfuscates) {
@@ -20,11 +19,15 @@ export class Obfuscate {
         this.obfuscates.forEach((obfuscate) => {
             switch (obfuscate) {
                 case 'emails':
-                    result
-                        = result.replace(Obfuscate.regex.email, '$<emailPrefix>***$<emailSuffix>@$<domainPrefix>***$<domainSuffix>');
+                    result = result.replace(
+                        Obfuscate.regex.email,
+                        '$<emailPrefix>***$<emailSuffix>@$<domainPrefix>***$<domainSuffix>',
+                    );
             }
         });
 
         return result;
     }
 }
+
+type Obfuscates = CliOptions['obfuscate'];
