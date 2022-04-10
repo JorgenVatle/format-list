@@ -14,28 +14,11 @@ export default class Parser {
                           .filter((entry) => !!entry);
     }
 
-    public async validateTextContent() {
-        let content: boolean;
-        try {
-            content = JSON.parse(this.text || '');
-        } catch (e) {
-            return;
-        }
+    public async validateContent() {
+        const validator = new Validator(this.text);
 
-        if (!Array.isArray(content)) {
-            return;
-        }
-
-        console.log(content);
-
-        const { shouldAbort } = await Inquirer.prompt({
-            name: 'shouldAbort',
-            type: 'confirm',
-            message: 'It looks like your clipboard already consists of a JSON array. Skip conversion?'
-        });
-
-        if (shouldAbort) {
-            process.exit(0);
+        if (validator.isAlreadyFormatted()) {
+            await validator.confirmReformatting();
         }
     }
 
@@ -54,5 +37,42 @@ export default class Parser {
     public async save() {
         await WriteToClipboard(JSON.stringify(this.result));
         this.print('Copied the following JSON array to your clipboard:');
+    }
+}
+
+class Validator {
+    constructor(
+        protected text: string,
+    ) {};
+
+    public async confirmReformatting() {
+        const { shouldAbort } = await Inquirer.prompt({
+            name: 'shouldAbort',
+            type: 'confirm',
+            message: 'It looks like your clipboard already consists of a JSON array. Skip conversion?'
+        });
+
+        if (shouldAbort) {
+            process.exit(0);
+        }
+    }
+
+    public isAlreadyFormatted() {
+        let json: any;
+        try {
+            json = JSON.parse(this.text)
+        } catch (error) {
+            return false;
+        }
+
+        if (!json) {
+            return false;
+        }
+
+        if (!Array.isArray(json)) {
+            return false;
+        }
+
+        return true;
     }
 }

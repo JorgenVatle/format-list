@@ -17,7 +17,7 @@ import { ReadClipboard } from './Providers/Clipboard';
             return process.exit(1);
     }
 
-    await parser.validateTextContent();
+    await parser.validateContent();
 
     if (CliArgs.immediate) {
         await parser.save();
