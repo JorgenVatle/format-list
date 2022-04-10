@@ -118,3 +118,6 @@ dist
 
 # TypeScript Compiled Result
 /dist
+
+# Package-lock
+package-lock.json
