@@ -6,7 +6,7 @@ const Package = require('../../package.json');
 export default Parser<CliOptions>({
     source: {
         type: (value: InputSource) => {
-            if (AvailableInputSources.includes(value)) {
+            if (!AvailableInputSources.includes(value)) {
                 throw new Error('This is not a valid input source!');
             }
             return value;
