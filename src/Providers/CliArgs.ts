@@ -58,8 +58,9 @@ export default Parser<CliOptions>({
     ]
 });
 
-export type InputSource = typeof AvailableInputSources[number];
-export type Obfuscate = typeof ObfuscateOptions[number];
+type Obfuscate = Obfuscates[number];
+type Obfuscates = typeof ObfuscateOptions;
+type InputSource = typeof AvailableInputSources[number];
 export interface CliOptions {
     immediate: boolean;
     source: InputSource;

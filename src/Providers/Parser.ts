@@ -1,4 +1,5 @@
 import Inquirer from 'inquirer';
+import { CliOptions } from './CliArgs';
 import { WriteToClipboard } from './Clipboard';
 
 export default class Parser {
@@ -7,11 +8,14 @@ export default class Parser {
 
     public constructor(
         protected text: string,
+        protected obfuscates?: CliOptions['obfuscate'],
     ) {
-        this.result = this.text.trim()
-                          .split(/[\r\n]+/)
-                          .map((entry) => entry.trim())
-                          .filter((entry) => !!entry);
+        this.result = new Obfuscate(obfuscates)
+            .apply(text)
+            .trim()
+            .split(/[\r\n]+/)
+            .map((entry) => entry.trim())
+            .filter((entry) => !!entry);
     }
 
     public async validateContent() {
@@ -37,6 +41,33 @@ export default class Parser {
     public async save() {
         await WriteToClipboard(JSON.stringify(this.result));
         this.print('Copied the following JSON array to your clipboard:');
+    }
+}
+
+
+class Obfuscate {
+    protected static regex = {
+        email: /(?<emailPrefix>[\w\d.-]{2,3}).*(?<emailSuffix>[\w\d.-]{2,3})(?:\+.*)?@(?<domainPrefix>[\w\d.-]{2,3}).*(?<domainSuffix>\.[\w\d.-]{2,})/
+    }
+
+    constructor(
+        protected obfuscates?: CliOptions['obfuscate']
+    ) {};
+
+    public apply(text: string) {
+        if (!this.obfuscates) {
+            return text;
+        }
+
+        let result = text;
+
+        this.obfuscates.forEach((obfuscate) => {
+            switch (obfuscate) {
+                case 'emails':
+                    result = result.replace(Obfuscate.regex.email, '$<emailPrefix>***$<emailSuffix>@$<domainPrefix>***$<domainSuffix>')
+            }
+        })
+        return text;
     }
 }
 

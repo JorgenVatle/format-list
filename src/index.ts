@@ -9,7 +9,7 @@ import { ReadClipboard } from './Providers/Clipboard';
 
     switch (CliArgs.source) {
         case 'clipboard':
-            parser = new Parser(await ReadClipboard());
+            parser = new Parser(await ReadClipboard(), CliArgs.obfuscate);
             break;
         default:
             Logger.error('Unknown or unsupported source!');
