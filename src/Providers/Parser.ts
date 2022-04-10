@@ -67,7 +67,8 @@ class Obfuscate {
                     result = result.replace(Obfuscate.regex.email, '$<emailPrefix>***$<emailSuffix>@$<domainPrefix>***$<domainSuffix>')
             }
         })
-        return text;
+
+        return result;
     }
 }
 
