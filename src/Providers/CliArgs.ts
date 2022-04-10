@@ -1,5 +1,6 @@
 import { parse as Parser } from 'ts-command-line-args';
 import Chalk from 'chalk';
+import Logger from './Logger';
 
 const AvailableInputSources = ['clipboard'] as const;
 const ObfuscateOptions = ['emails'] as const;
@@ -9,11 +10,11 @@ export default Parser<CliOptions>({
     source: {
         type: (value: InputSource) => {
             if (!AvailableInputSources.includes(value)) {
-                console.error(
-                    `\n${Chalk.bgRed(`Oops, ${Chalk.underline(value)} not a supported input source!`)}\n\nTry the following instead:\n%s\n\nOr for more help:\n%s`,
-                    `$\t jippy --source ${Chalk.yellowBright(AvailableInputSources[0])}`,
-                    `$\t jippy --help`,
-                );
+                Logger.error(`Oops, ${Chalk.underline(value)} not a supported input source!`);
+                Logger.suggestHelp({
+                    option: 'source',
+                    value: 'clipboard',
+                })
                 process.exit(22);
             }
 
@@ -33,11 +34,8 @@ export default Parser<CliOptions>({
     obfuscate: {
         type: (value: Obfuscate) => {
             if (!ObfuscateOptions.includes(value)) {
-                console.error(
-                    `\n${Chalk.bgRed(`Oops, ${Chalk.underline(value)} not a supported obfuscate option!`)}\n\nTry the following instead:\n%s\n\nOr for more help:\n%s`,
-                    `$\t jippy --obfuscate ${Chalk.yellowBright(ObfuscateOptions[0])}`,
-                    `$\t jippy --help`,
-                );
+                Logger.error(`Oops, ${Chalk.underline(value)} not a supported obfuscate option!`);
+                Logger.suggestHelp({ option: 'obfuscate', value: 'emails' });
                 process.exit(22);
             }
             return value;
