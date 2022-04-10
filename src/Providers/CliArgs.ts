@@ -13,7 +13,8 @@ export default Parser<CliOptions>({
         },
         alias: 's',
         defaultValue: 'clipboard',
-        description: `Input source. Can be one of the following; ${AvailableInputSources.join(', ')}`,
+        description: `Whether we should grab text from your clipboard or a file`,
+        typeLabel: AvailableInputSources.join(', ')
     },
     immediate: {
         type: Boolean,
