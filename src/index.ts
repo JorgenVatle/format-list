@@ -1,9 +1,23 @@
+import Chalk from 'chalk';
+import Clipboardy from 'clipboardy';
 import Inquirer from 'inquirer';
 import CliArgs from './Providers/CliArgs';
+import Logger from './Providers/Logger';
 import Parser from './Providers/Parser';
 
 (async () => {
-    const parser = new Parser();
+    let parser: Parser;
+
+    switch (CliArgs.source) {
+        case 'clipboard':
+            parser = new Parser(Clipboardy.readSync());
+            break;
+        default:
+            Logger.error('Unknown or unsupported source!');
+            Logger.suggestHelp();
+            return process.exit(1);
+    }
+
     await parser.validateTextContent();
 
     if (CliArgs.immediate) {
