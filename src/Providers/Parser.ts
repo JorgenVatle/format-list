@@ -14,7 +14,7 @@ export default class Parser {
             console.error('Could not read from clipboard! Are you sure the content of your clipboard is a UTF-8 encoded string?')
             process.exit(1);
         }
-        this.result = this.text.trim().split(/(\r\n|\r|\n)+/).map((entry) => entry.trim()).filter((entry) => !!entry);
+        this.result = this.text.trim().split(/[\r\n]+/).map((entry) => entry.trim()).filter((entry) => !!entry);
     }
 
     public async validateTextContent() {
