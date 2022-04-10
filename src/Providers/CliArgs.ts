@@ -1,13 +1,14 @@
 import { parse as Parser } from 'ts-command-line-args';
 
-export const AvailableInputSources = ['clipboard'];
+const AvailableInputSources = ['clipboard'];
 const Package = require('../../package.json');
 
 export default Parser<CliOptions>({
     source: {
         type: (value: InputSource) => {
             if (!AvailableInputSources.includes(value)) {
-                throw new Error('This is not a valid input source!');
+                console.error(`'%s' is not an allowed input source. Please enter one of the following as the '-s' argument: %s`, value, AvailableInputSources);
+                process.exit(22);
             }
             return value;
         },
