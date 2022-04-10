@@ -1,35 +1,28 @@
-import Minimist from 'minimist';
-import Inquirer, { Question, QuestionCollection } from 'inquirer';
-import Parser from './Parser';
-
-type InputSource = 'clipboard' | 'file' | 'pipe';
-
-interface CliOptions {
-    immediate: boolean;
-    source: InputSource;
-}
-
-const availableSources: InputSource[] = ['clipboard'];
-const options = Minimist<CliOptions>(process.argv.splice(2), {
-    boolean: ['immediate'],
-    string: ['source'],
-    alias: {
-        i: 'immediate',
-        s: 'source',
-    }
-});
+import Inquirer from 'inquirer';
+import CliArgs from './Providers/CliArgs';
+import Logger from './Providers/Logger';
+import { Obfuscate } from './Providers/Parser/Obfuscate';
+import Parser from './Providers/Parser/Parser';
+import { ReadClipboard } from './Providers/Clipboard';
 
 (async () => {
-    const source = options.source || 'clipboard';
+    let text: string;
 
-    if (!availableSources.includes(source)) {
-        console.error(`'%s' is not an allowed input source. Please enter one of the following as the '-s' argument: %s`, options.source, availableSources);
+    switch (CliArgs.source) {
+        case 'clipboard':
+            text = await ReadClipboard();
+            break;
+        default:
+            Logger.error('Unknown or unsupported source!');
+            Logger.suggestHelp();
+            return process.exit(1);
     }
 
-    const parser = new Parser();
-    await parser.validateTextContent();
+    const obfuscate = new Obfuscate(CliArgs.obfuscate);
+    const parser = new Parser(obfuscate.apply(text));
+    await parser.validateContent();
 
-    if (options.immediate) {
+    if (CliArgs.immediate) {
         await parser.save();
         return;
     }
