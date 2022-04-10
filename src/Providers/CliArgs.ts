@@ -1,8 +1,8 @@
 import { parse as Parser } from 'ts-command-line-args';
 import Chalk from 'chalk';
 
-const AvailableInputSources = ['clipboard'];
-const ObfuscateOptions = ['emails']
+const AvailableInputSources = ['clipboard'] as const;
+const ObfuscateOptions = ['emails'] as const;
 const Package = require('../../package.json');
 
 export default Parser<CliOptions>({
