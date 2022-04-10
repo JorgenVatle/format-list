@@ -1,5 +1,5 @@
-import Clipboardy from 'clipboardy';
 import Inquirer from 'inquirer';
+import { WriteToClipboard } from './Clipboard';
 
 export default class Parser {
 
@@ -8,7 +8,10 @@ export default class Parser {
     public constructor(
         protected text: string,
     ) {
-        this.result = this.text.trim().split(/[\r\n]+/).map((entry) => entry.trim()).filter((entry) => !!entry);
+        this.result = this.text.trim()
+                          .split(/[\r\n]+/)
+                          .map((entry) => entry.trim())
+                          .filter((entry) => !!entry);
     }
 
     public async validateTextContent() {
@@ -49,7 +52,7 @@ export default class Parser {
     }
 
     public async save() {
-        await Clipboardy.write(JSON.stringify(this.result));
+        await WriteToClipboard(JSON.stringify(this.result));
         this.print('Copied the following JSON array to your clipboard:');
     }
 }

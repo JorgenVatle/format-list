@@ -2,7 +2,7 @@ import Inquirer from 'inquirer';
 import CliArgs from './Providers/CliArgs';
 import Logger from './Providers/Logger';
 import Parser from './Providers/Parser';
-import ReadClipboard from './Providers/ReadClipboard';
+import { ReadClipboard } from './Providers/Clipboard';
 
 (async () => {
     let parser: Parser;
